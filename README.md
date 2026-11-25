@@ -65,6 +65,8 @@ During benchmarks, CPU boost is on, the governor is set to performance and the d
 
 ## Method and caveats
 
+The weights are the official `deepseek-ai/DeepSeek-V4.1-Flash-1017` checkpoint, revision `1bae0e10`, exactly as released (510 GB): FP8 with 4-bit (`fp4`) expert weights, as its own `config.json` declares. Nothing was re-quantized. The KV cache is FP8.
+
 Runs are batch 1, temperature 0 and streamed, using cold prompts with a cache-bust nonce. Each pass is 2 warm-ups and 5 runs. The 760 and 753 results are the run closest to the median of 20 runs (four passes).
 
 The `code-only` prompt is Fraser Price's own BRRR bench prompt, a repeated webhook coding task with an instruction to output code only. LocalMaxxing marks it unverified because it is not one of its canonical prompts; the `code-v1` runs are Verified. Code-only output is what lifts acceptance to about 6 tokens per step. On prose, acceptance and speed are much lower: `reasoning-v1` does 319 tok/s at stock.
