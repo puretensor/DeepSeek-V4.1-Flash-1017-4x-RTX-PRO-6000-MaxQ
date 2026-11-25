@@ -1,0 +1,9 @@
+This repository contains PureTensor's host settings, benchmark tooling and results. It does not redistribute the engine.
+
+- The serving image is built, unmodified, from Fraser Price's BRRR recipe:
+  https://huggingface.co/fraserprice/DeepSeek-4.1-Flash-1017-BRRR (Apache-2.0), on Local Inference Lab's b12x vLLM
+  base image. The fused decode kernels, the Engram NVMe reader and the serving defaults are their work.
+- The NVIDIA peer-to-peer registry keys in host/nvidia-p2p.conf are the ones that recipe's p2p.sh sets.
+- prompts/canonical_prompts.json holds LocalMaxxing's canonical speed-test prompts (code-v1, reasoning-v1) and the
+  webhook coding prompt from Fraser Price's benchmark; prompts/codeonly.json holds his code-only bench prompt.
+- Model: deepseek-ai/DeepSeek-V4.1-Flash-1017 (MIT), revision 1bae0e10.
